@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>My OSCP Experience | Lazar</title>
+<meta name="keywords" content="OSCP, Experience, Story" />
+<meta name="description" content="This is my story on how I obtained OSCP certification first try at 17 years old.">
+<meta name="author" content="Lazar">
+<link rel="canonical" href="https://lazarpostenje.github.io/posts/my-oscp-experience/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5fbbdacac0b93b9e22ad582043fc0e2fa61ae067848cfa5eefd44c142e202b8.css" integrity="sha256-pfu9rKwLk7niKtWCBD/A4vphrgZ4SM&#43;l7v1EwULiArg=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://lazarpostenje.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://lazarpostenje.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://lazarpostenje.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://lazarpostenje.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://lazarpostenje.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.87.0" />
+<meta property="og:title" content="My OSCP Experience" />
+<meta property="og:description" content="This is my story on how I obtained OSCP certification first try at 17 years old." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lazarpostenje.github.io/posts/my-oscp-experience/" /><meta property="og:image" content="https://lazarpostenje.github.io/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-06-17T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-06-17T00:00:00&#43;00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://lazarpostenje.github.io/papermod-cover.png"/>
+
+<meta name="twitter:title" content="My OSCP Experience"/>
+<meta name="twitter:description" content="This is my story on how I obtained OSCP certification first try at 17 years old."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://lazarpostenje.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "My OSCP Experience",
+      "item": "https://lazarpostenje.github.io/posts/my-oscp-experience/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "My OSCP Experience",
+  "name": "My OSCP Experience",
+  "description": "This is my story on how I obtained OSCP certification first try at 17 years old.",
+  "keywords": [
+    "OSCP", "Experience", "Story"
+  ],
+  "articleBody": "Introduction to “trying harder” How it all started When I was 14 years old, I was amazed by how hackers could do something which seems impossible to an average non-IT person. After some googling and researching, I found out about OSCP certification and after reading bunch of reviews and experience stories about it, it seemed impossible for me to obtain it. I got so scared that I forgot about it completely and started learning web development. Three years of web development later, when the 2019 was coming to an end, I wanted to set a goal for “New Year’s Resolutions” and I thought of that “scary” certification - OSCP. Since COVID-19 breakout caused global lockdowns, I had all the time in the world to study for it.\n My “not so good” approach When I officially started, 1st of january 2020, I didn’t know basic UNIX shell commands. I was so noob that I thought cat command meant the literal house cat and I was like “what the f*** is this all about? A cat in the command line?”. The first thing that I had to learn is how to use basic shell commands and how to navigate the system, learn how files and directories are organized in both Linux and Windows. I obviously had 0 experience with any of pentesting stuff. Luckily I had some understanding of networking and programming.\nAfter the basics After learning the basics of command line, the next logical step for me is to get out there and do things! I remember trying to do Traverxec box on HackTheBox pentesting platform with very little success. It took me 15 days to root it, even though the initial foothold was Metasploit module for RCE and privilege escalation was simple sudo command. The whole get out there and do things was very bad approach because it involved me googling for hours and hours just to find out how that one thing is called.\nThe real progress I started seeing progress after regularly watching Ippsec’s videos on retired HackTheBox machines. To replicate his videos, I had to purchase monthly VIP subscription on HackTheBox which really paid off. I was so obsessed with pwning retired boxes that I sometimes forgot to eat.\nOf course, I took notes while watching Ippsec’s videos, I didn’t figure out those boxes by myself. I did not want to waste time googling stuff that I can easily watch being explained by Ippsec. I watched one of his videos every single day, following TJ Null’s OSCP-like boxes list and taking notes on what stuff can be exploited, what to search for when I see X port open.\nQuickly after, I developed my own methodology which was mostly based on his, with little adjustments which suited me better. You probably won’t succeed without self-explanatory and detailed notes.\nHow I took notes I used a free software called Joplin which is available on all kinds of devices, for free!. Joplin is a markdown editor which has built-in backup feature. I connected it to my dropbox account and voila! Free notes!\nBeginning of PWK After 6 months of watching Ippsec’s walkthroughs, I finally decided to purchase 90-day lab period. After cashing out $1350, I felt really scared because at the time, that was all of my savings, I even had to sell my phone and downgrade just to do PWK. My lab time started on 20th of june 2020 at 2am. I couldn’t sleep that night, all I did was browsing around the student forums and learning how to use the PWK Labs control panel. On the second day, I started reading the PDF and watching videos.\nThe mistakes I made Going through the material, I immediately started doing the exercices and documenting them until I burned out from all the studying. It felt like I wasn’t making progress, like I was stuck and the depression jumped in. I quickly abandoned the PDF and videos and jumped straight into labs - BUT YOU SHOULD NOT DO THE SAME!. That was the dumbest thing I ever did, because I had to refer back to the PDF every time I got stuck on a machine which cost me a lot of precious lab time.\nSecond mistake that I made was not communicating with others. I didn’t have any contacts to discuss about anything related to penetration testing and I felt like I was alone at it. The community is very supportive and go out and make as much as pentesting friends as possible! Sharing experiences and knowledge is what makes pentesting fun.\nBuffer overflow - how? PWK module for buffer overflow didn’t do much for me, not because it is bad, but because it only gave me 2 examples on how to exploit the vulnerability. I needed more throrough explanation so I saw on r/oscp that everyone recommended The Cyber Mentor’s Buffer Overflows Made Easy playlist. That playlist is a gold mine of BoF resources and explanations. He did a very good job making it as simple as possible and I recommend everyone to watch it.\nAfter learning basic BoF, I moved on to some non-PWK labs to practice it even further. I stumbled upon TryHackMe Buffer overflow prep room which had 10 unique binaries to exploit. THIS IS ALL YOU NEED FOR PWK BOF!!!\nThe labs I could not do any of the lab machines on my own, and I had to rely on hints from student forums. Which seems like bad thing to do, but it worked for me. All I needed at the time was the experience in popping shells and knowing what attack vectors are possible, because I didn’t know some of them even existed. If I hadn’t checked the forums for hints, I would’ve probably wasted so much lab time googling the stuff I had in front of my eyes. BUT the important thing is that after looking at the hints, I did not just move on, but I looked at it deeper and researched about why does that vulnerability occur and how to exploit it.\nCouple of days later, I caught COVID-19 and couldn’t leave my house for a month because of the quarantine. I used all of that time to study and root boxes in the lab because what else could I do? Schools and everything else was closed, even the lockdown got much more strict, which is why I had so much time to invest into labs.\nAfter some time, I managed to move between the departments and eventually I rooted whole PWK labs, having almost 2 months left to do exercices and finish PDF. I felt ready for the exam, but I did not want to schedule it 2 months earlier! So I sat down and started doing boring exercices. Exercices were the most difficult thing on PWK! They required you to google a lot, to think out of the box and sometimes you don’t know what is the goal of the exercice and get confused. After a month, I finally managed to finish the lab report documenting 10 lab machines, step by step, and all required exercices. I remember finding on r/oscp a checklist of all required exercices and you should too!. Don’t get me wrong, exercices were very useful, and those 10 lab boxes which you had to document are the best practice for final exam report. At the end, it was worth it.\nExternal labs Not knowing what else to do, I bought a subscription on CyberSecLabs which paid off! They don’t have the same difficult boxes as for example, HackTheBox, but they teach you a vast majority of misconfigurations and common vulnerabilities which were left out from PWK labs. Their boxes we’re usually very easy, but still a good practice and confidence boost right before the exam!\n The Exam I scheduled my exam for 15th of september 2020 at 12pm. That time worked the best for me, but it might not do well for you. The night before the exam, I could barely sleep. I had to take melatonin just to stop my thoughts and fall asleep.\nAfter I woke up, I realized that I didn’t have a camera which is required so the proctor can see and identify you. I panicked but I managed to get one from my friend. Before the exam started, I sat down and made a strategy for next 23 hours and 45 minutes.\nThe strategy Before the exam, I opened up my two main cheatsheets I commonly browsed, full of useful info, and of course, my own notes from PWK labs which I cannot share for obvious reasons. Those are the links:\n Sushant747 gitbook Hacktricks book  I used NmapAutomator to scan all boxes except BoF one. While I did the BoF, results came back for all other boxes saving me some time. I used tmux to make multiple windows, and ran nmapautomator on all of the boxes.\nMy strategy was to take a 15 minute break every 2 hours or after every time I get root.\nWorkflow of the exam I first jumped right into the BoF box, where they give you the debug machine to test your payload. I managed to do it in 35 minutes, taking screenshots while following the cheatsheet at noobsec. After getting first 25pts I felt VERY motivated thinking that I’ll finish the exam very soon.\nAfter BoF machine, I took a break for 15 minutes and started my 2 hour timer, while examining enumeration results of 25pt box. After examining the results, I had no idea what to do! I felt very scared because I really wanted to do the hardest one first. I didn’t know what I was looking at, I felt the same way that I felt when I did my first ever box, Traverxec.\nAfter 2 hours, the timer rang and I had to move on to another box, wasting 2 hours googling the stuff I haven’t even heard about, without much success. I moved on to 20pt box, which I owned in 4 hours. It wasn’t straighforward at all, full of rabbit holes.\nAfter rooting the box, I knew that I had 55 points, 8 hours in. Not bad. I had to choose between going back to 25pt box or doing 10pt + 20pt. I didn’t want to reply on my lab report to pass. I moved on to 20pt box, examining the results and not finding anything for next 4 hours. I felt very scared and stressed that I tried to sleep, but I couldn’t! The adrenaline was rushing through me and I couldn’t even close my eyes. I knew I had to try harder.\nWithout anything on 20pt box, I moved on to 10pt one where I quickly found the way to exploit but for some reason I just couldn’t! I used my metasploit allowance which did not help me. That box was very frustrating and I had to ask offsec staff to verify if it is exploitable or not, and after 2 hours they said that it is working properly.\n16 hours in, still at 55 points without any progression. I decided to go for a walk and come back after half an hour. I came back to 25pt box and caught myself doing all the same things that I did the first time tackling it, so I stopped and thought “Why don’t I do something else?” and I started thinking out of the box. Soon I realized what I’ve been missing, and found initial foothold which was very tricky to get working. 2 hours later, I finally got user on 25pt box. But still it was not enough to pass, so I tried harder.\nAfter 2 hours of enumerating the 25pt box internally, I found out what I needed. It took me an hour to get exploit to work, and I got code execution as root user but I could’t replicate it again. It took me some troubleshooting to get it working again. I was at 70 points + lab report. I knew that I have enough points to pass and I shouted “YEEEEEAAAAAHHH” as loud as I could. Because of all the adrenaline and happiness coming out of me, I told myself why not try those 2 remaining boxes? And I managed to root both of them in 1 hour, ending the exam after 23 hours.\nReport day After I ended the exam, I took a nap and dreamed of me failing which was the worst nightmare I’ve ever had. After waking up I realized it was just a dream and that I have 105 points in reality! Such an amazing feeling.\nWhile doing the boxes, I screenshotted everything I could, maybe I did it too much, but it is better to over-do it than under-do it. For report, I followed John Hammond’s tutorial on note taking and report generating which you can see here. Markdown made it much easier and much faster to write a report. My report consisted of 60 pages, where I explained everything with as much detail as I could.\nOffsec is strict when it comes to reports - you must know what you did on the exam. You need to explain it. If you aren’t native english speaker, like me, don’t worry, they don’t mind some grammar mistakes but you should know the basics of english.\nI finished my report after 6 hours, read it couple of times before submitting and waiting for the results.\n The results This email brought me so much happiness knowing that I achieved something I worked really hard for 9 months! I successfully completed the goal for 2020!\nOne month after, I finally received the physical certificate\nThank you! I want to thank all the people I mentioned above! Without them and their content creation, this wouldn’t be possible! Now going for OSWE :)\n",
+  "wordCount" : "2307",
+  "inLanguage": "en",
+  "datePublished": "2021-06-17T00:00:00Z",
+  "dateModified": "2021-06-17T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Lazar"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://lazarpostenje.github.io/posts/my-oscp-experience/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Lazar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://lazarpostenje.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+<noscript>
+    <style type="text/css">
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://lazarpostenje.github.io" accesskey="h" title="Lazar (Alt + H)">Lazar</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://lazarpostenje.github.io/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lazarpostenje.github.io/posts/" title="Posts">
+                    <span>Posts</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lazarpostenje.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://lazarpostenje.github.io/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://lazarpostenje.github.io">Home</a>&nbsp;»&nbsp;<a href="https://lazarpostenje.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      My OSCP Experience
+    </h1>
+    <div class="post-description">
+      This is my story on how I obtained OSCP certification first try at 17 years old.
+    </div>
+    <div class="post-meta">June 17, 2021&nbsp;·&nbsp;11 min&nbsp;·&nbsp;Lazar
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <div class="details">Table of Contents</div>
+        </summary>
+        <div class="inner"><ul><ul>
+                <li>
+                    <a href="#introduction-to-trying-harder" aria-label="Introduction to &amp;ldquo;trying harder&amp;rdquo;">Introduction to &ldquo;trying harder&rdquo;</a><ul>
+                        
+                <li>
+                    <a href="#how-it-all-started" aria-label="How it all started">How it all started</a></li></ul>
+                </li>
+                <li>
+                    <a href="#my-not-so-good-approach" aria-label="My &amp;ldquo;not so good&amp;rdquo; approach">My &ldquo;not so good&rdquo; approach</a><ul>
+                        
+                <li>
+                    <a href="#after-the-basics" aria-label="After the basics">After the basics</a></li>
+                <li>
+                    <a href="#the-real-progress" aria-label="The real progress">The real progress</a></li>
+                <li>
+                    <a href="#how-i-took-notes" aria-label="How I took notes">How I took notes</a></li></ul>
+                </li></ul>
+                    
+                <li>
+                    <a href="#beginning-of-pwk" aria-label="Beginning of PWK">Beginning of PWK</a><ul>
+                        
+                <li>
+                    <a href="#the-mistakes-i-made" aria-label="The mistakes I made">The mistakes I made</a></li>
+                <li>
+                    <a href="#buffer-overflow---how" aria-label="Buffer overflow - how?">Buffer overflow - how?</a></li>
+                <li>
+                    <a href="#the-labs" aria-label="The labs">The labs</a></li>
+                <li>
+                    <a href="#external-labs" aria-label="External labs">External labs</a></li></ul>
+                </li>
+                <li>
+                    <a href="#the-exam" aria-label="The Exam">The Exam</a><ul>
+                        
+                <li>
+                    <a href="#the-strategy" aria-label="The strategy">The strategy</a></li>
+                <li>
+                    <a href="#workflow-of-the-exam" aria-label="Workflow of the exam">Workflow of the exam</a></li></ul>
+                </li>
+                <li>
+                    <a href="#report-day" aria-label="Report day">Report day</a></li>
+                <li>
+                    <a href="#the-results" aria-label="The results">The results</a><ul>
+                        
+                <li>
+                    <a href="#thank-you" aria-label="Thank you!">Thank you!</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h2 id="introduction-to-trying-harder">Introduction to &ldquo;trying harder&rdquo;<a hidden class="anchor" aria-hidden="true" href="#introduction-to-trying-harder">#</a></h2>
+<h3 id="how-it-all-started">How it all started<a hidden class="anchor" aria-hidden="true" href="#how-it-all-started">#</a></h3>
+<p>When I was 14 years old, I was amazed by how hackers could do something which seems impossible to an average non-IT person. After some googling and researching, I found out about OSCP certification and after reading bunch of reviews and experience stories about it, it seemed impossible for me to obtain it. I got so scared that I forgot about it completely and started learning web development. Three years of web development later, when the 2019 was coming to an end, I wanted to set a goal for &ldquo;New Year&rsquo;s Resolutions&rdquo; and I thought of that &ldquo;scary&rdquo; certification - OSCP. Since COVID-19 breakout caused global lockdowns, I had all the time in the world to study for it.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/oscp.png#center" alt="OSCP"  />
+</p>
+<hr>
+<h2 id="my-not-so-good-approach">My &ldquo;not so good&rdquo; approach<a hidden class="anchor" aria-hidden="true" href="#my-not-so-good-approach">#</a></h2>
+<p>When I officially started, 1st of january 2020, I didn&rsquo;t know basic UNIX shell commands. I was so noob that I thought <code>cat</code> command meant the literal house cat and I was like &ldquo;<em>what the f*** is this all about? A cat in the command line?</em>&rdquo;. The first thing that I had to learn is how to use basic shell commands and how to navigate the system, learn how files and directories are organized in both Linux and Windows. I obviously had <strong>0 experience</strong> with any of pentesting stuff. Luckily I had some understanding of networking and programming.</p>
+<h3 id="after-the-basics">After the basics<a hidden class="anchor" aria-hidden="true" href="#after-the-basics">#</a></h3>
+<p>After learning the basics of command line, the next logical step for me is to get out there and do things! I remember trying to do <strong>Traverxec</strong> box on <a href="https://www.hackthebox.eu"><em>HackTheBox</em></a> pentesting platform with very little success. It took me 15 days to root it, even though the initial foothold was <em>Metasploit</em> module for RCE and privilege escalation was simple sudo command. The whole <em>get out there and do things</em> was very bad approach because it involved me googling for hours and hours just to find out how <em>that one thing</em> is called.</p>
+<h3 id="the-real-progress">The real progress<a hidden class="anchor" aria-hidden="true" href="#the-real-progress">#</a></h3>
+<p>I started seeing progress after regularly watching <a href="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA">Ippsec&rsquo;s</a> videos on retired <a href="https://www.hackthebox.eu"><em>HackTheBox</em></a> machines. To replicate his videos, I had to purchase monthly VIP subscription on HackTheBox which <strong>really paid off</strong>. I was so obsessed with pwning retired boxes that I sometimes forgot to eat.</p>
+<p>Of course, I took notes while watching Ippsec&rsquo;s videos, I didn&rsquo;t figure out those boxes by myself. I did not want to waste time googling stuff that I can easily watch being explained by Ippsec. I watched one of his videos every single day, following <strong>TJ Null&rsquo;s</strong> <a href="https://docs.google.com/spreadsheets/d/1dwSMIAPIam0PuRBkCiDI88pU3yzrqqHkDtBngUHNCw8/edit#gid=0">OSCP-like boxes list</a> and taking notes on what stuff can be exploited, what to search for when I see <em>X</em> port open.</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/tjnulloscplikeboxes.png#center" alt="TJ Null OSCP Like boxes"  />
+</p>
+<p>Quickly after, I developed my own methodology which was mostly based on his, with little adjustments which suited me better. <strong>You probably won&rsquo;t succeed without self-explanatory and detailed notes.</strong></p>
+<h3 id="how-i-took-notes">How I took notes<a hidden class="anchor" aria-hidden="true" href="#how-i-took-notes">#</a></h3>
+<p>I used a free software called <a href="https://joplinapp.org/">Joplin</a> which is available on all kinds of devices, <strong>for free!</strong>. Joplin is a markdown editor which has built-in backup feature. I connected it to my dropbox account and <strong>voila</strong>! Free notes!</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/joplin.png#center" alt="Joplin"  />
+</p>
+<h1 id="beginning-of-pwk">Beginning of PWK<a hidden class="anchor" aria-hidden="true" href="#beginning-of-pwk">#</a></h1>
+<p>After 6 months of watching Ippsec&rsquo;s walkthroughs, I finally decided to purchase <em>90-day lab period</em>. After cashing out $1350, I felt really scared because at the time, that was all of my savings, I even had to sell my phone and downgrade just to do PWK. My lab time started on 20th of june 2020 at 2am. I couldn&rsquo;t sleep that night, all I did was browsing around the student forums and learning how to use the PWK Labs control panel. On the second day, I started reading the PDF and watching videos.</p>
+<h2 id="the-mistakes-i-made">The mistakes I made<a hidden class="anchor" aria-hidden="true" href="#the-mistakes-i-made">#</a></h2>
+<p>Going through the material, I immediately started doing the exercices and documenting them until I burned out from all the studying. It felt like I wasn&rsquo;t making progress, like I was stuck and the depression jumped in. I quickly abandoned the PDF and videos and jumped straight into labs - <strong>BUT YOU SHOULD NOT DO THE SAME!</strong>. That was the dumbest thing I ever did, because I had to refer back to the PDF every time I got stuck on a machine which cost me a lot of <em>precious</em> lab time.</p>
+<p>Second mistake that I made was not communicating with others. I didn&rsquo;t have any contacts to discuss about anything related to penetration testing and I felt like I was alone at it. <strong>The community is very supportive and go out and make as much as <em>pentesting friends</em> as possible! Sharing experiences and knowledge is what makes pentesting fun</strong>.</p>
+<h2 id="buffer-overflow---how">Buffer overflow - how?<a hidden class="anchor" aria-hidden="true" href="#buffer-overflow---how">#</a></h2>
+<p>PWK module for buffer overflow didn&rsquo;t do much for me, not because it is bad, but because it only gave me 2 examples on how to exploit the vulnerability. I needed more throrough explanation so I saw on <a href="https://www.reddit.com/r/oscp/">r/oscp</a> that everyone recommended The Cyber Mentor&rsquo;s <a href="https://www.youtube.com/watch?v=qSnPayW6F7U">Buffer Overflows Made Easy</a> playlist. That playlist is a <strong>gold mine</strong> of BoF resources and explanations. He did a very good job making it as simple as possible and I recommend everyone to watch it.</p>
+<p>After learning basic BoF, I moved on to some non-PWK labs to practice it even further. I stumbled upon TryHackMe <a href="https://www.tryhackme.com/room/bufferoverflowprep">Buffer overflow prep</a> room which had 10 unique binaries to exploit. <strong>THIS IS ALL YOU NEED FOR PWK BOF!!!</strong></p>
+<h2 id="the-labs">The labs<a hidden class="anchor" aria-hidden="true" href="#the-labs">#</a></h2>
+<p>I could not do any of the lab machines on my own, and I had to rely on hints from student forums. Which seems like <em>bad</em> thing to do, but it worked for me. All I needed at the time was the <strong>experience</strong> in popping shells and knowing what attack vectors are possible, because I didn&rsquo;t know some of them even existed. If I hadn&rsquo;t checked the forums for hints, I would&rsquo;ve probably wasted so much lab time googling the stuff I had in front of my eyes. <strong>BUT</strong> the important thing is that after looking at the hints, I did not just move on, but I looked at it deeper and researched about why does that vulnerability occur and how to exploit it.</p>
+<p>Couple of days later, I caught COVID-19 and couldn&rsquo;t leave my house for a month because of the quarantine. I used all of that time to study and root boxes in the lab because what else could I do? Schools and everything else was closed, even the lockdown got much more strict, which is why I had so much time to invest into labs.</p>
+<p>After some time, I managed to move between the departments and eventually I rooted whole PWK labs, having almost 2 months left to do exercices and finish PDF. I felt ready for the exam, but I did not want to schedule it 2 months earlier! So I sat down and started doing <strong>boring</strong> exercices. Exercices were the most difficult thing on PWK! They required you to google a lot, to think out of the box and sometimes you don&rsquo;t know what is the goal of the exercice and get confused. After a month, I finally managed to finish the lab report documenting 10 lab machines, step by step, and all required exercices. I remember finding on r/oscp a <strong>checklist of all required exercices and you should too!</strong>. Don&rsquo;t get me wrong, exercices were very useful, and those 10 lab boxes which you had to document are the best practice for final <strong>exam report</strong>. At the end, it was worth it.</p>
+<h2 id="external-labs">External labs<a hidden class="anchor" aria-hidden="true" href="#external-labs">#</a></h2>
+<p>Not knowing what else to do, I bought a subscription on <a href="https://www.cyberseclabs.co.uk/">CyberSecLabs</a> which paid off! They don&rsquo;t have the same difficult boxes as for example, HackTheBox, but they teach you a vast majority of misconfigurations and common vulnerabilities which were left out from PWK labs. Their boxes we&rsquo;re usually very easy, but still a good practice and confidence boost right before the exam!</p>
+<hr>
+<h1 id="the-exam">The Exam<a hidden class="anchor" aria-hidden="true" href="#the-exam">#</a></h1>
+<p>I scheduled my exam for 15th of september 2020 at 12pm. That time worked the best for me, but it might not do well for you. The night before the exam, I could barely sleep. I had to take melatonin just to stop my thoughts and fall asleep.</p>
+<p>After I woke up, I realized that I didn&rsquo;t have a camera which is <strong>required</strong> so the proctor can see and identify you. I panicked but I managed to get one from my friend. Before the exam started, I sat down and made a strategy for next 23 hours and 45 minutes.</p>
+<h2 id="the-strategy">The strategy<a hidden class="anchor" aria-hidden="true" href="#the-strategy">#</a></h2>
+<p>Before the exam, I opened up my two main cheatsheets I commonly browsed, full of useful info, and of course, my own notes from PWK labs which I cannot share for obvious reasons. Those are the links:</p>
+<ul>
+<li><a href="https://sushant747.gitbooks.io/total-oscp-guide/content/">Sushant747 gitbook</a></li>
+<li><a href="https://book.hacktricks.xyz/">Hacktricks book</a></li>
+</ul>
+<p>I used <a href="https://github.com/21y4d/nmapAutomator">NmapAutomator</a> to scan all boxes except BoF one. While I did the BoF, results came back for all other boxes saving me some time. I used tmux to make multiple windows, and ran <code>nmapautomator</code> on all of the boxes.</p>
+<p>My strategy was to take a 15 minute break every 2 hours or after every time I get root.</p>
+<h2 id="workflow-of-the-exam">Workflow of the exam<a hidden class="anchor" aria-hidden="true" href="#workflow-of-the-exam">#</a></h2>
+<p>I first jumped right into the BoF box, where they give you the <strong>debug machine</strong> to test your payload. I managed to do it in 35 minutes, taking screenshots while following the cheatsheet at <a href="https://www.noobsec.net/bof/">noobsec</a>. After getting first 25pts I felt <strong>VERY</strong> motivated thinking that I&rsquo;ll finish the exam very soon.</p>
+<p>After BoF machine, I took a break for 15 minutes and started my 2 hour timer, while examining enumeration results of 25pt box. After examining the results, I had no idea what to do! I felt very scared because I really wanted to do the hardest one first. I didn&rsquo;t know what I was looking at, I felt the same way that I felt when I did my first ever box, <em>Traverxec</em>.</p>
+<p>After 2 hours, the timer rang and I had to move on to another box, wasting 2 hours googling the stuff I haven&rsquo;t even heard about, without much success. I moved on to 20pt box, which I owned in 4 hours. It wasn&rsquo;t straighforward at all, full of rabbit holes.</p>
+<p>After rooting the box, I knew that I had 55 points, 8 hours in. Not bad. I had to choose between going back to 25pt box or doing 10pt + 20pt. I didn&rsquo;t want to reply on my lab report to pass. I moved on to 20pt box, examining the results and not finding anything for next 4 hours. I felt very scared and stressed that I tried to sleep, but I couldn&rsquo;t! The adrenaline was rushing through me and I couldn&rsquo;t even close my eyes. I knew I had to try harder.</p>
+<p>Without anything on 20pt box, I moved on to 10pt one where I quickly found the way to  exploit but for some reason I just couldn&rsquo;t! I used my <strong>metasploit allowance</strong> which did not help me. That box was very frustrating and I had to ask offsec staff to verify if it is exploitable or not, and after 2 hours they said that it is working properly.</p>
+<p>16 hours in, still at 55 points without any progression. I decided to go for a walk and come back after half an hour. I came back to 25pt box and caught myself doing all the same things that I did the first time tackling it, so I stopped and thought &ldquo;Why don&rsquo;t I do something else?&rdquo; and I started thinking out of the box. Soon I realized what I&rsquo;ve been missing, and found initial foothold which was very tricky to get working. 2 hours later, I finally got user on 25pt box. But still it was not enough to pass, so I <strong>tried harder</strong>.</p>
+<p>After 2 hours of enumerating the 25pt box internally, I found out what I needed. It took me an hour to get exploit to work, and I got code execution as root user but I could&rsquo;t replicate it again. It took me some troubleshooting to get it working again. I was at 70 points + lab report. I knew that I have enough points to pass and I shouted &ldquo;YEEEEEAAAAAHHH&rdquo; as loud as I could. Because of all the adrenaline and happiness coming out of me, I told myself why not try those 2 remaining boxes? And I managed to root both of them in 1 hour, ending the exam after 23 hours.</p>
+<h1 id="report-day">Report day<a hidden class="anchor" aria-hidden="true" href="#report-day">#</a></h1>
+<p>After I ended the exam, I took a nap and dreamed of me failing which was the worst nightmare I&rsquo;ve ever had. After waking up I realized it was just a dream and that I have 105 points in reality! Such an amazing feeling.</p>
+<p>While doing the boxes, I screenshotted everything I could, maybe I did it too much, but it is better to over-do it than under-do it. For report, I followed <em>John Hammond&rsquo;s</em>  tutorial on note taking and report generating which you can see <a href="https://www.youtube.com/watch?v=MQGozZzHUwQ">here</a>. Markdown made it much easier and much faster to write a report. My report consisted of 60 pages, where I explained everything with as much detail as I could.</p>
+<p>Offsec is strict when it comes to reports - you must know what you did on the exam. You need to explain it. If you aren&rsquo;t native english speaker, like me, don&rsquo;t worry, they don&rsquo;t mind some grammar mistakes but you should know the basics of english.</p>
+<p>I finished my report after 6 hours, read it couple of times before submitting and waiting for the results.</p>
+<hr>
+<h1 id="the-results">The results<a hidden class="anchor" aria-hidden="true" href="#the-results">#</a></h1>
+<p>This email brought me so much happiness knowing that I achieved something I worked really hard for 9 months! I successfully completed the goal for 2020!</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/result.PNG#center" alt="Result"  />
+</p>
+<p>One month after, I finally received the <strong>physical certificate</strong></p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/cert.jpg#center" alt="Cert"  />
+</p>
+<h2 id="thank-you">Thank you!<a hidden class="anchor" aria-hidden="true" href="#thank-you">#</a></h2>
+<p>I want to thank all the people I mentioned above! Without them and their content creation, this wouldn&rsquo;t be possible! Now going for <strong>OSWE</strong> :)</p>
+
+
+  </div>
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://lazarpostenje.github.io/tags/oscp/">OSCP</a></li>
+      <li><a href="https://lazarpostenje.github.io/tags/experience/">Experience</a></li>
+      <li><a href="https://lazarpostenje.github.io/tags/story/">Story</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://lazarpostenje.github.io/posts/code-analysis/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>Simple Code Analysis</span>
+  </a>
+</nav>
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My OSCP Experience on twitter"
+        href="https://twitter.com/intent/tweet/?text=My%20OSCP%20Experience&amp;url=https%3a%2f%2flazarpostenje.github.io%2fposts%2fmy-oscp-experience%2f&amp;hashtags=OSCP%2cExperience%2cStory">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My OSCP Experience on linkedin"
+        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2flazarpostenje.github.io%2fposts%2fmy-oscp-experience%2f&amp;title=My%20OSCP%20Experience&amp;summary=My%20OSCP%20Experience&amp;source=https%3a%2f%2flazarpostenje.github.io%2fposts%2fmy-oscp-experience%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-288.985,423.278l0,-225.717l-75.04,0l0,225.717l75.04,0Zm270.539,0l0,-129.439c0,-69.333 -37.018,-101.586 -86.381,-101.586c-39.804,0 -57.634,21.891 -67.617,37.266l0,-31.958l-75.021,0c0.995,21.181 0,225.717 0,225.717l75.02,0l0,-126.056c0,-6.748 0.486,-13.492 2.474,-18.315c5.414,-13.475 17.767,-27.434 38.494,-27.434c27.135,0 38.007,20.707 38.007,51.037l0,120.768l75.024,0Zm-307.552,-334.556c-25.674,0 -42.448,16.879 -42.448,39.002c0,21.658 16.264,39.002 41.455,39.002l0.484,0c26.165,0 42.452,-17.344 42.452,-39.002c-0.485,-22.092 -16.241,-38.954 -41.943,-39.002Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My OSCP Experience on reddit"
+        href="https://reddit.com/submit?url=https%3a%2f%2flazarpostenje.github.io%2fposts%2fmy-oscp-experience%2f&title=My%20OSCP%20Experience">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-3.446,265.638c0,-22.964 -18.616,-41.58 -41.58,-41.58c-11.211,0 -21.361,4.457 -28.841,11.666c-28.424,-20.508 -67.586,-33.757 -111.204,-35.278l18.941,-89.121l61.884,13.157c0.756,15.734 13.642,28.29 29.56,28.29c16.407,0 29.706,-13.299 29.706,-29.701c0,-16.403 -13.299,-29.702 -29.706,-29.702c-11.666,0 -21.657,6.792 -26.515,16.578l-69.105,-14.69c-1.922,-0.418 -3.939,-0.042 -5.585,1.036c-1.658,1.073 -2.811,2.761 -3.224,4.686l-21.152,99.438c-44.258,1.228 -84.046,14.494 -112.837,35.232c-7.468,-7.164 -17.589,-11.591 -28.757,-11.591c-22.965,0 -41.585,18.616 -41.585,41.58c0,16.896 10.095,31.41 24.568,37.918c-0.639,4.135 -0.99,8.328 -0.99,12.576c0,63.977 74.469,115.836 166.33,115.836c91.861,0 166.334,-51.859 166.334,-115.836c0,-4.218 -0.347,-8.387 -0.977,-12.493c14.564,-6.47 24.735,-21.034 24.735,-38.001Zm-119.474,108.193c-20.27,20.241 -59.115,21.816 -70.534,21.816c-11.428,0 -50.277,-1.575 -70.522,-21.82c-3.007,-3.008 -3.007,-7.882 0,-10.889c3.003,-2.999 7.882,-3.003 10.885,0c12.777,12.781 40.11,17.317 59.637,17.317c19.522,0 46.86,-4.536 59.657,-17.321c3.016,-2.999 7.886,-2.995 10.885,0.008c3.008,3.011 3.003,7.882 -0.008,10.889Zm-5.23,-48.781c-16.373,0 -29.701,-13.324 -29.701,-29.698c0,-16.381 13.328,-29.714 29.701,-29.714c16.378,0 29.706,13.333 29.706,29.714c0,16.374 -13.328,29.698 -29.706,29.698Zm-160.386,-29.702c0,-16.381 13.328,-29.71 29.714,-29.71c16.369,0 29.689,13.329 29.689,29.71c0,16.373 -13.32,29.693 -29.689,29.693c-16.386,0 -29.714,-13.32 -29.714,-29.693Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My OSCP Experience on facebook"
+        href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2flazarpostenje.github.io%2fposts%2fmy-oscp-experience%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-106.468,0l0,-192.915l66.6,0l12.672,-82.621l-79.272,0l0,-53.617c0,-22.603 11.073,-44.636 46.58,-44.636l36.042,0l0,-70.34c0,0 -32.71,-5.582 -63.982,-5.582c-65.288,0 -107.96,39.569 -107.96,111.204l0,62.971l-72.573,0l0,82.621l72.573,0l0,192.915l-191.104,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My OSCP Experience on whatsapp"
+        href="https://api.whatsapp.com/send?text=My%20OSCP%20Experience%20-%20https%3a%2f%2flazarpostenje.github.io%2fposts%2fmy-oscp-experience%2f">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-58.673,127.703c-33.842,-33.881 -78.847,-52.548 -126.798,-52.568c-98.799,0 -179.21,80.405 -179.249,179.234c-0.013,31.593 8.241,62.428 23.927,89.612l-25.429,92.884l95.021,-24.925c26.181,14.28 55.659,21.807 85.658,21.816l0.074,0c98.789,0 179.206,-80.413 179.247,-179.243c0.018,-47.895 -18.61,-92.93 -52.451,-126.81Zm-126.797,275.782l-0.06,0c-26.734,-0.01 -52.954,-7.193 -75.828,-20.767l-5.441,-3.229l-56.386,14.792l15.05,-54.977l-3.542,-5.637c-14.913,-23.72 -22.791,-51.136 -22.779,-79.287c0.033,-82.142 66.867,-148.971 149.046,-148.971c39.793,0.014 77.199,15.531 105.329,43.692c28.128,28.16 43.609,65.592 43.594,105.4c-0.034,82.149 -66.866,148.983 -148.983,148.984Zm81.721,-111.581c-4.479,-2.242 -26.499,-13.075 -30.604,-14.571c-4.105,-1.495 -7.091,-2.241 -10.077,2.241c-2.986,4.483 -11.569,14.572 -14.182,17.562c-2.612,2.988 -5.225,3.364 -9.703,1.12c-4.479,-2.241 -18.91,-6.97 -36.017,-22.23c-13.314,-11.876 -22.304,-26.542 -24.916,-31.026c-2.612,-4.484 -0.279,-6.908 1.963,-9.14c2.016,-2.007 4.48,-5.232 6.719,-7.847c2.24,-2.615 2.986,-4.484 4.479,-7.472c1.493,-2.99 0.747,-5.604 -0.374,-7.846c-1.119,-2.241 -10.077,-24.288 -13.809,-33.256c-3.635,-8.733 -7.327,-7.55 -10.077,-7.688c-2.609,-0.13 -5.598,-0.158 -8.583,-0.158c-2.986,0 -7.839,1.121 -11.944,5.604c-4.105,4.484 -15.675,15.32 -15.675,37.364c0,22.046 16.048,43.342 18.287,46.332c2.24,2.99 31.582,48.227 76.511,67.627c10.685,4.615 19.028,7.371 25.533,9.434c10.728,3.41 20.492,2.929 28.209,1.775c8.605,-1.285 26.499,-10.833 30.231,-21.295c3.732,-10.464 3.732,-19.431 2.612,-21.298c-1.119,-1.869 -4.105,-2.99 -8.583,-5.232Z" />
+        </svg>
+    </a>
+    <a target="_blank" rel="noopener noreferrer" aria-label="share My OSCP Experience on telegram"
+        href="https://telegram.me/share/url?text=My%20OSCP%20Experience&amp;url=https%3a%2f%2flazarpostenje.github.io%2fposts%2fmy-oscp-experience%2f">
+        <svg version="1.1" xml:space="preserve" viewBox="2 2 28 28">
+            <path
+                d="M26.49,29.86H5.5a3.37,3.37,0,0,1-2.47-1,3.35,3.35,0,0,1-1-2.47V5.48A3.36,3.36,0,0,1,3,3,3.37,3.37,0,0,1,5.5,2h21A3.38,3.38,0,0,1,29,3a3.36,3.36,0,0,1,1,2.46V26.37a3.35,3.35,0,0,1-1,2.47A3.38,3.38,0,0,1,26.49,29.86Zm-5.38-6.71a.79.79,0,0,0,.85-.66L24.73,9.24a.55.55,0,0,0-.18-.46.62.62,0,0,0-.41-.17q-.08,0-16.53,6.11a.59.59,0,0,0-.41.59.57.57,0,0,0,.43.52l4,1.24,1.61,4.83a.62.62,0,0,0,.63.43.56.56,0,0,0,.4-.17L16.54,20l4.09,3A.9.9,0,0,0,21.11,23.15ZM13.8,20.71l-1.21-4q8.72-5.55,8.78-5.55c.15,0,.23,0,.23.16a.18.18,0,0,1,0,.06s-2.51,2.3-7.52,6.8Z" />
+        </svg>
+    </a>
+</div>
+
+  </footer>
+</article>
+    </main>
+    <footer class="footer">
+    <span>&copy; 2021 <a href="https://lazarpostenje.github.io">Lazar</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
+    <button class="top-link" id="top-link" type="button" accesskey="g">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+            <path style='color:palevioletred;' d="M12 6H0l6-6z" />
+        </svg>
+    </button>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+    menu.onscroll = function () {
+        localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

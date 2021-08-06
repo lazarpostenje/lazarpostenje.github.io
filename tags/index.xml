@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Lazar</title>
+    <link>https://lazarpostenje.github.io/tags/</link>
+    <description>Recent content in Tags on Lazar</description>
+    <image>
+      <url>https://lazarpostenje.github.io/papermod-cover.png</url>
+      <link>https://lazarpostenje.github.io/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 04 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lazarpostenje.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OSWE</title>
+      <link>https://lazarpostenje.github.io/tags/oswe/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/oswe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RCE</title>
+      <link>https://lazarpostenje.github.io/tags/rce/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/rce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shell upload</title>
+      <link>https://lazarpostenje.github.io/tags/shell-upload/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/shell-upload/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web hacking</title>
+      <link>https://lazarpostenje.github.io/tags/web-hacking/</link>
+      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/web-hacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Code Analysis</title>
+      <link>https://lazarpostenje.github.io/tags/code-analysis/</link>
+      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/code-analysis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>White Box</title>
+      <link>https://lazarpostenje.github.io/tags/white-box/</link>
+      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/white-box/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XSS</title>
+      <link>https://lazarpostenje.github.io/tags/xss/</link>
+      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/xss/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Experience</title>
+      <link>https://lazarpostenje.github.io/tags/experience/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/experience/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OSCP</title>
+      <link>https://lazarpostenje.github.io/tags/oscp/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/oscp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Story</title>
+      <link>https://lazarpostenje.github.io/tags/story/</link>
+      <pubDate>Thu, 17 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/story/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
