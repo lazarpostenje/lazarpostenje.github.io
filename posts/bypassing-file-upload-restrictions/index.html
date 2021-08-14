@@ -20,6 +20,38 @@ var host = "lazarv.com";
         
     }
 </script>
+
+<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+
+<style>
+    
+    body,
+html {
+    height: 100%;
+}
+
+#particles-js canvas {
+    display: block;
+    
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    -webkit-transition: opacity .8s ease, -webkit-transform 1.4s ease;
+    transition: opacity .8s ease, transform 1.4s ease
+}
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -10;
+    top: 0;
+    left: 0
+}
+    
+    </style>
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5fbbdacac0b93b9e22ad582043fc0e2fa61ae067848cfa5eefd44c142e202b8.css" integrity="sha256-pfu9rKwLk7niKtWCBD/A4vphrgZ4SM&#43;l7v1EwULiArg=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js" integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5&#43;kdJvBz5iKbt6B5PJI="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -98,9 +130,20 @@ var host = "lazarv.com";
   }
 }
 </script>
+    
 </head>
 
 <body class=" dark" id="top">
+    <div id="particles-js"></div>
+    
+    <script>
+
+
+particlesJS("particles-js", {
+  
+  "particles":{"number":{"value":40,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.2244776885211732,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":3.413648243462092,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":801.7060304327614,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":false,"mode":"repulse"},"onclick":{"enable":false,"mode":"remove"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+
+</script>
 <script>
     if (localStorage.getItem("pref-theme") === "light") {
         document.body.classList.remove('dark')
@@ -403,9 +446,11 @@ which can be easily bypassed by intercepting the traffic.</p>
     <footer class="footer">
     <span>&copy; 2021 <a href="https://lazarpostenje.github.io">Lazar</a></span>
     <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://git.io/hugopapermod" rel="noopener" target="_blank">PaperMod</a>
+        
+        
+       | All rights reserved.
+        
+        
     </span>
 </footer>
 <a href="#top" aria-label="go to top" title="Go to Top (Alt + G)">
