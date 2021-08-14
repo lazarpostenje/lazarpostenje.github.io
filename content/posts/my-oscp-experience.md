@@ -122,7 +122,7 @@ I finished my report after 6 hours, read it couple of times before submitting an
 
 This email brought me so much happiness knowing that I achieved something I worked really hard for 9 months! I successfully completed the goal for 2020!
 
-![Result](https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/result.PNG#center)
+![Result](https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/result.png#center)
 
 One month after, I finally received the **physical certificate**
 

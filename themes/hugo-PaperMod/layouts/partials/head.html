@@ -32,6 +32,13 @@
 {{- if .Site.Params.analytics.bing.SiteVerificationTag }}
 <meta name="msvalidate.01" content="{{ .Site.Params.analytics.bing.SiteVerificationTag }}" />
 {{- end }}
+<script>
+
+     var host = "lazarv.com";
+    if ((host == window.location.host) && (window.location.protocol != "https:"))
+        window.location.protocol = "https";
+
+</script>
 
 {{- /* Styles */}}
 {{- $theme_vars := (resources.Get "css/core/theme-vars.css") }}
