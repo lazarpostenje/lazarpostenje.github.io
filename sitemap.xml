@@ -2,28 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lazarpostenje.github.io/posts/bypassing-file-upload-restrictions/</loc>
-    <lastmod>2021-08-04T00:00:00+00:00</lastmod>
+    <loc>https://lazarpostenje.github.io/tags/bypass/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lazarpostenje.github.io/tags/ctf/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/</loc>
-    <lastmod>2021-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/tags/oswe/</loc>
-    <lastmod>2021-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/posts/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lazarpostenje.github.io/tags/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lazarpostenje.github.io/posts/unicode-normalization-vulnerabilities/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lazarpostenje.github.io/tags/web-hacking/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lazarpostenje.github.io/tags/xss/</loc>
+    <lastmod>2021-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lazarpostenje.github.io/posts/bypassing-file-upload-restrictions/</loc>
     <lastmod>2021-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/tags/rce/</loc>
     <lastmod>2021-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/tags/shell-upload/</loc>
-    <lastmod>2021-08-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lazarpostenje.github.io/tags/</loc>
-    <lastmod>2021-08-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lazarpostenje.github.io/tags/web-hacking/</loc>
     <lastmod>2021-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/tags/code-analysis/</loc>
@@ -33,9 +45,6 @@
     <lastmod>2021-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/tags/white-box/</loc>
-    <lastmod>2021-07-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lazarpostenje.github.io/tags/xss/</loc>
     <lastmod>2021-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lazarpostenje.github.io/tags/experience/</loc>

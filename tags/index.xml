@@ -9,13 +9,49 @@
       <link>https://lazarpostenje.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 04 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lazarpostenje.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lazarpostenje.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bypass</title>
+      <link>https://lazarpostenje.github.io/tags/bypass/</link>
+      <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/bypass/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CTF</title>
+      <link>https://lazarpostenje.github.io/tags/ctf/</link>
+      <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>OSWE</title>
       <link>https://lazarpostenje.github.io/tags/oswe/</link>
-      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lazarpostenje.github.io/tags/oswe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web hacking</title>
+      <link>https://lazarpostenje.github.io/tags/web-hacking/</link>
+      <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/web-hacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>XSS</title>
+      <link>https://lazarpostenje.github.io/tags/xss/</link>
+      <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lazarpostenje.github.io/tags/xss/</guid>
       <description></description>
     </item>
     
@@ -38,15 +74,6 @@
     </item>
     
     <item>
-      <title>Web hacking</title>
-      <link>https://lazarpostenje.github.io/tags/web-hacking/</link>
-      <pubDate>Wed, 04 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lazarpostenje.github.io/tags/web-hacking/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Code Analysis</title>
       <link>https://lazarpostenje.github.io/tags/code-analysis/</link>
       <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
@@ -61,15 +88,6 @@
       <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lazarpostenje.github.io/tags/white-box/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>XSS</title>
-      <link>https://lazarpostenje.github.io/tags/xss/</link>
-      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lazarpostenje.github.io/tags/xss/</guid>
       <description></description>
     </item>
     

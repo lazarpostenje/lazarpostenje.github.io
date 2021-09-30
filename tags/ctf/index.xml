@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>XSS on Lazar</title>
-    <link>https://lazarpostenje.github.io/tags/xss/</link>
-    <description>Recent content in XSS on Lazar</description>
+    <title>CTF on Lazar</title>
+    <link>https://lazarpostenje.github.io/tags/ctf/</link>
+    <description>Recent content in CTF on Lazar</description>
     <image>
       <url>https://lazarpostenje.github.io/papermod-cover.png</url>
       <link>https://lazarpostenje.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 30 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lazarpostenje.github.io/tags/xss/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lazarpostenje.github.io/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unicode normalization vulnerabilities</title>
       <link>https://lazarpostenje.github.io/posts/unicode-normalization-vulnerabilities/</link>
@@ -17,15 +17,6 @@
       
       <guid>https://lazarpostenje.github.io/posts/unicode-normalization-vulnerabilities/</guid>
       <description>Very simple yet interesting web bypass technique</description>
-    </item>
-    
-    <item>
-      <title>Simple Code Analysis</title>
-      <link>https://lazarpostenje.github.io/posts/code-analysis/</link>
-      <pubDate>Thu, 29 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lazarpostenje.github.io/posts/code-analysis/</guid>
-      <description>A great tutorial for those who are just starting white box testing</description>
     </item>
     
   </channel>
