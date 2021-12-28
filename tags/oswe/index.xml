@@ -9,11 +9,11 @@
       <link>https://lazarpostenje.github.io/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 27 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lazarpostenje.github.io/tags/oswe/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lazarpostenje.github.io/tags/oswe/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>XML External Entity Injection</title>
       <link>https://lazarpostenje.github.io/posts/xml-external-entity-injection/</link>
-      <pubDate>Mon, 27 Dec 2021 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 28 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lazarpostenje.github.io/posts/xml-external-entity-injection/</guid>
       <description>Exploiting misconfigured XML parsers</description>

